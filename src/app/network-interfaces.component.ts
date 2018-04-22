@@ -1,7 +1,7 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
 import {AppState, NetInterface} from "./models";
 import {Store} from "@ngrx/store";
-import {FetchNetInterfaces} from "./actions";
+import {fetchNetInterfaces} from "./actions";
 import {Observable} from "rxjs/Observable";
 import {getError, getInterfaces} from "./selectors";
 
@@ -45,6 +45,6 @@ export class NetworkInterfacesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(new FetchNetInterfaces());
+    this.store.dispatch(fetchNetInterfaces());
   }
 }

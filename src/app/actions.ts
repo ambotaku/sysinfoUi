@@ -10,8 +10,10 @@ export const FETCH_NETINTERFACES = '[NetInterfaces] FETCH';
 export const GOT_NETINTERFACES = '[NetInterfaces COMPLETE]';
 export const ERROR_NETINTERFACES = '[NetInterfaces] ERROR';
 
+export const fetchMemory = () => ({type: FETCH_MEMORY});
+
 export class FetchMemory implements Action {
-  readonly  type = FETCH_MEMORY;
+  readonly type = FETCH_MEMORY;
 }
 
 export class GotMemory implements Action {
@@ -24,8 +26,10 @@ export class ErrorMemory implements Action {
   constructor(public payload: string) {}
 }
 
+export const fetchNetInterfaces = () => ({type: FETCH_NETINTERFACES});
+
 export class FetchNetInterfaces implements Action {
-  readonly  type = FETCH_NETINTERFACES;
+  readonly type = FETCH_NETINTERFACES;
 }
 
 export class GotNetInterfaces implements Action {
@@ -38,5 +42,5 @@ export class ErrorNetInterfaces implements Action {
   constructor(public payload: string) {}
 }
 
-export type  All = FetchMemory | GotMemory | ErrorMemory
-  | FetchNetInterfaces | GotNetInterfaces | ErrorNetInterfaces;
+export type  All = GotMemory | ErrorMemory | GotNetInterfaces | ErrorNetInterfaces
+  | FetchNetInterfaces | FetchMemory;

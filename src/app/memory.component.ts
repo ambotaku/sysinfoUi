@@ -3,7 +3,7 @@ import {AppState, Memory} from "./models";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs/Observable";
 import {getMemory} from "./selectors";
-import {FetchMemory} from "./actions";
+import {fetchMemory} from "./actions";
 
 @Component({
   selector: 'memory',
@@ -52,15 +52,15 @@ import {FetchMemory} from "./actions";
 })
 export class MemoryComponent {
   memory$: Observable<Memory|{}>;
-  memory: Memory|{};
+  memory: Memory;
 
   constructor(private store: Store<AppState>) {
     this.memory$ = store.select(getMemory);
   }
 
   ngOnInit() {
-    this.store.dispatch(new FetchMemory());
+    this.store.dispatch(fetchMemory());
 
-    this.memory$.subscribe(mem => this.memory = mem);
+    this.memory$.subscribe(mem => this.memory = <Memory>mem);
   }
 }
