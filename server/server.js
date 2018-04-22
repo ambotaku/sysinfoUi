@@ -30,6 +30,13 @@ router.get('/network-interfaces', (req, res) => {
   });
 });
 
+router.get('/network-status/:id', (req, res) => {
+  const itf = req.params.id;
+  sysInfo.networkStats(itf, data => {
+    res.json(data);
+  });
+});
+
 router.get('/processes', (req, res) => {
   sysInfo.processes(data => {
     res.json(data);

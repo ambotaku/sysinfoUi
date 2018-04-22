@@ -1,3 +1,12 @@
+export interface InterfaceStatus {
+  iface: string;
+  operstate: string;
+  rx: number;
+  tx: number;
+  rx_sec: number;
+  tx_sec: number;
+  ms: number;
+}
 
 export interface NetInterface {
   iface: string;
@@ -5,6 +14,7 @@ export interface NetInterface {
   ip6: string;
   mac: string;
   internal: boolean;
+  status?: InterfaceStatus;
 }
 
 export interface Memory {

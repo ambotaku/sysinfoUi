@@ -21,7 +21,8 @@ import {getError, getInterfaces} from "./selectors";
         </thead>
         <tbody>
         <tr *ngFor="let itf of netInterfaces$ | async">
-          <td>{{itf.iface}}</td>
+
+          <td>{{itf.iface}} <a href="#" data-toggle="tooltip" title="{{itf.status}}">[status]</a></td>
           <td>{{itf.ip4}}</td>
           <td>{{itf.ip6}}</td>
           <td>{{itf.mac}}</td>

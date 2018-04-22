@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Memory, NetInterface} from "./models";
+import {InterfaceStatus, Memory, NetInterface} from "./models";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
@@ -28,4 +28,15 @@ export class SysInfoService {
 
     return data$;
   }
+
+  getNetStatus(itfName: string): Observable<InterfaceStatus> {
+    let data$ = new Subject<InterfaceStatus>();
+    this.http.get<InterfaceStatus>(`/api/network-status/${itfName}`)
+      .subscribe(data => {
+        data$.next(data);
+      });
+
+    return data$;
+  }
+
 }
