@@ -1,0 +1,19 @@
+{
+  "name": "sysinfo",
+  "version": "1.0.0",
+  "description": "SystemInfo JSON/Rest server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ".git"
+  },
+  "author": "Klaus Zerbe",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "systeminformation": "^3.38.0"
+  }
+}
