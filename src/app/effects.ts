@@ -8,10 +8,18 @@ import {of} from "rxjs/observable/of";
 import {InterfaceStatus, Memory, NetInterface} from "./models";
 
 import {
-  ErrorNetInterfaces, FETCH_MEMORY, FETCH_NETINTERFACES, GotMemory, GotNetInterfaces
+  ErrorNetInterfaces,
+  FETCH_MEMORY,
+  FETCH_NETINTERFACES,
+  fetchMemory,
+  FetchMemory,
+  GOT_MEMORY,
+  GotMemory,
+  GotNetInterfaces
 } from "./actions";
 
-import {switchMap, map, tap, catchError} from "rxjs/operators";
+import {switchMap, map, tap, catchError, delay} from "rxjs/operators";
+import {timer} from "rxjs/observable/timer";
 
 
 @Injectable()
@@ -46,6 +54,13 @@ export class SysInfoEffects {
           catchError(error => of(new ErrorNetInterfaces(error)))
         )
     )
+  );
+
+  @Effect()
+  memory_repeat$: Observable<Action> = this.actions$.pipe(
+    ofType(GOT_MEMORY),
+    delay(2000),
+    switchMap(() => of(fetchMemory()))
   );
 
 }
