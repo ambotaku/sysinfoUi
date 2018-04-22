@@ -12,39 +12,39 @@ import {fetchMemory} from "./actions";
       <table class="table table-striped">
         <tr>
           <td>Total</td>
-          <td>{{memory.total}}</td>
+          <td>{{memory.total | kilobytes}}</td>
         </tr> 
         <tr>
           <td>Free</td>
-          <td>{{memory?.free}}</td>
+          <td>{{memory.free | kilobytes}}</td>
         </tr>
         <tr>
           <td>Used</td>
-          <td>{{memory?.used}}</td>
+          <td>{{memory.used | kilobytes}}</td>
         </tr>
         <tr>
           <td>Active</td>
-          <td>{{memory?.active}}</td>
+          <td>{{memory.active | kilobytes}}</td>
         </tr>
         <tr>
           <td>Available</td>
-          <td>{{memory?.available}}</td>
+          <td>{{memory.available | kilobytes}}</td>
         </tr>
         <tr>
           <td>Buffer Cache</td>
-          <td>{{memory?.buffcache}}</td>
+          <td>{{memory.buffcache | kilobytes}}</td>
         </tr>
         <tr>
           <td>Total Swap</td>
-          <td>{{memory?.swaptotal}}</td>
+          <td>{{memory.swaptotal | kilobytes}}</td>
         </tr>
         <tr>
           <td>Used Swap</td>
-          <td>{{memory?.swapused}}</td>
+          <td>{{memory.swapused | kilobytes}}</td>
         </tr>
         <tr>
           <td>Free Swap</td>
-          <td>{{memory?.swapfree}}</td>
+          <td>{{memory.swapfree | kilobytes}}</td>
         </tr>
       </table>
     </div>

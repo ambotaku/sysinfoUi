@@ -12,7 +12,7 @@ import {SysInfoReducer} from "./reducer";
 import {EffectsModule} from "@ngrx/effects";
 import {SysInfoEffects} from "./effects";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {InterfaceStatusPipe} from "./interfacestatus.pipe";
+import {InterfaceStatusPipe, KilobyteDisplay} from "./interfacestatus.pipe";
 
 const routes: Routes = [
   { path: 'network-interfaces', component: NetworkInterfacesComponent },
@@ -25,7 +25,8 @@ const routes: Routes = [
     AppComponent,
     NetworkInterfacesComponent,
     MemoryComponent,
-    InterfaceStatusPipe
+    InterfaceStatusPipe,
+    KilobyteDisplay
   ],
   imports: [
     BrowserModule,
