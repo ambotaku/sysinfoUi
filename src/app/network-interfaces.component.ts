@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AppState, InterfaceStatus, NetInterface} from "./models";
+import {AppState, NetInterface} from "./models";
 import {Store} from "@ngrx/store";
 import {fetchNetInterfaces} from "./actions";
 import {Observable} from "rxjs/Observable";
