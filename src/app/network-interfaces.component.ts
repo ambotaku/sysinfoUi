@@ -1,9 +1,10 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
-import {AppState, NetInterface} from "./models";
+import {Component, OnInit} from '@angular/core';
+import {AppState, InterfaceStatus, NetInterface} from "./models";
 import {Store} from "@ngrx/store";
 import {fetchNetInterfaces} from "./actions";
 import {Observable} from "rxjs/Observable";
 import {getError, getInterfaces} from "./selectors";
+
 
 @Component({
   selector: 'network-interfaces',
@@ -22,7 +23,7 @@ import {getError, getInterfaces} from "./selectors";
         <tbody>
         <tr *ngFor="let itf of netInterfaces$ | async">
 
-          <td>{{itf.iface}} <a href="#" data-toggle="tooltip" title="{{itf.status}}">[status]</a></td>
+          <td>{{itf.iface}} <a href="#" data-toggle="tooltip" title="{{itf.status|itfStatus}}">[status]</a></td>
           <td>{{itf.ip4}}</td>
           <td>{{itf.ip6}}</td>
           <td>{{itf.mac}}</td>

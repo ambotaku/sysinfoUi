@@ -5,11 +5,12 @@ import {Action} from '@ngrx/store';
 import {Observable} from "rxjs/Observable";
 import {of} from "rxjs/observable/of";
 
-import {Memory, NetInterface} from "./models";
+import {InterfaceStatus, Memory, NetInterface} from "./models";
 
 import {
   ErrorNetInterfaces, FETCH_MEMORY, FETCH_NETINTERFACES, GotMemory, GotNetInterfaces
 } from "./actions";
+
 import {switchMap, map, tap, catchError} from "rxjs/operators";
 
 
@@ -25,7 +26,11 @@ export class SysInfoEffects {
     switchMap(() =>
       this.http.get<NetInterface[]>('/api/network-interfaces')
         .pipe(
-          map((interfaces: NetInterface[]) => new GotNetInterfaces(interfaces)),
+          tap(data => data.map(itf => {
+            this.http.get<InterfaceStatus>(`/api/network-status/${itf.iface}`)
+              .subscribe((status) => itf.status = status);
+          })),
+          map(interfaces => new GotNetInterfaces(interfaces)),
           catchError(error => of(new ErrorNetInterfaces(error)))
         )
     )

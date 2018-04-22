@@ -11,7 +11,8 @@ import {StoreModule} from "@ngrx/store";
 import {SysInfoReducer} from "./reducer";
 import {EffectsModule} from "@ngrx/effects";
 import {SysInfoEffects} from "./effects";
-import {StoreDevtools, StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {InterfaceStatusPipe} from "./interfacestatus.pipe";
 
 const routes: Routes = [
   { path: 'network-interfaces', component: NetworkInterfacesComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     NetworkInterfacesComponent,
-    MemoryComponent
+    MemoryComponent,
+    InterfaceStatusPipe
   ],
   imports: [
     BrowserModule,
