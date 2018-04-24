@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {AppState, NetInterface} from "./models";
-import {Store} from "@ngrx/store";
-import {fetchNetInterfaces} from "./actions";
-import {Observable} from "rxjs/Observable";
-import {getError, getInterfaces} from "./selectors";
+import {AppState, NetInterface} from './models';
+import {Store} from '@ngrx/store';
+import {fetchNetInterfaces} from './actions';
+import {Observable} from 'rxjs/Observable';
+import {getError, getInterfaces} from './selectors';
 
 
 @Component({
-  selector: 'network-interfaces',
+  selector: 'app-network-interfaces',
   template: `
     <div class="container">
       <table class="table table-striped">

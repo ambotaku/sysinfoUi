@@ -1,14 +1,13 @@
-import { Component } from '@angular/core';
-import {AppState, Memory} from "./models";
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs/Observable";
-import {getMemory} from "./selectors";
-import {fetchMemory} from "./actions";
+import {Component, OnInit} from '@angular/core';
+import {AppState, Memory} from './models';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
+import {getMemory} from './selectors';
+import {fetchMemory} from './actions';
 
 @Component({
-  selector: 'memory',
-  template: `
-    <div class="container">
+  selector: 'app-memory',
+  template: `<div class="container">
       <table class="table table-striped">
         <tr>
           <td>Total</td>
@@ -47,20 +46,19 @@ import {fetchMemory} from "./actions";
           <td>{{memory.swapfree | kilobytes}}</td>
         </tr>
       </table>
-    </div>
-  `,
-})
-export class MemoryComponent {
-  memory$: Observable<Memory|{}>;
-  memory: Memory;
+    </div>`,
+  })
+  export class MemoryComponent implements OnInit {
+    memory$: Observable<Memory|{}>;
+    memory: Memory;
 
-  constructor(private store: Store<AppState>) {
-    this.memory$ = store.select(getMemory);
-  }
+    constructor(private store: Store<AppState>) {
+      this.memory$ = store.select(getMemory);
+    }
 
-  ngOnInit() {
-    this.store.dispatch(fetchMemory());
+    ngOnInit() {
+      this.store.dispatch(fetchMemory());
 
-    this.memory$.subscribe(mem => this.memory = <Memory>mem);
-  }
+      this.memory$.subscribe(mem => this.memory = <Memory>mem);
+    }
 }

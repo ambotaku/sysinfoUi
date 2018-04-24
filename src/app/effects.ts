@@ -1,31 +1,25 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Actions, Effect, ofType } from "@ngrx/effects";
+import {Actions, Effect, ofType } from '@ngrx/effects';
 import {Action} from '@ngrx/store';
-import {Observable} from "rxjs/Observable";
-import {of} from "rxjs/observable/of";
+import {Observable} from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
 
-import {InterfaceStatus, Memory, NetInterface} from "./models";
+import {InterfaceStatus, Memory, NetInterface} from './models';
 
 import {
-  ErrorNetInterfaces,
-  FETCH_MEMORY,
-  FETCH_NETINTERFACES,
-  fetchMemory,
-  FetchMemory,
-  GOT_MEMORY,
-  GotMemory,
-  GotNetInterfaces
-} from "./actions";
+  FETCH_MEMORY, FETCH_NETINTERFACES, GOT_MEMORY,
+  ErrorMemory, ErrorNetInterfaces, GotMemory, GotNetInterfaces,
+  fetchMemory
+} from './actions';
 
-import {switchMap, map, tap, catchError, delay} from "rxjs/operators";
-import {timer} from "rxjs/observable/timer";
+import {switchMap, map, tap, catchError, delay} from 'rxjs/operators';
 
 
 @Injectable()
 export class SysInfoEffects {
   constructor(private actions$: Actions<Action>, private http: HttpClient) {
-    console.log("SysInfo effects init");
+    console.log('SysInfo effects init');
   }
 
   @Effect()
@@ -51,7 +45,7 @@ export class SysInfoEffects {
       this.http.get<Memory>('/api/mem')
         .pipe(
           map((memory: Memory) => new GotMemory(memory)),
-          catchError(error => of(new ErrorNetInterfaces(error)))
+          catchError(error => of(new ErrorMemory(error)))
         )
     )
   );

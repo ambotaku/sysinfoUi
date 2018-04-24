@@ -1,6 +1,6 @@
 
-import {Action} from "@ngrx/store";
-import {Memory, NetInterface} from "./models";
+import {Action} from '@ngrx/store';
+import {Memory, NetInterface} from './models';
 
 export const FETCH_MEMORY = '[Memory] FETCH';
 export const GOT_MEMORY = '[Memory COMPLETE]';
